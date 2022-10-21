@@ -1,0 +1,14 @@
+{
+  "name": "vendor_name/proiectdaw",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "alex",
+      "email": "alex.pavel2002@gmail.com"
+    }
+  ],
+  "require": {
+  }
+}

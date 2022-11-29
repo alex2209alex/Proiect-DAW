@@ -37,23 +37,24 @@
                         ?>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Pacient
-                    </a>
-                    <ul class="dropdown-menu">
-                        <?php
-                        if (session_status() != PHP_SESSION_ACTIVE) {
-                            session_start();
-                        }
-                        if (isset($_SESSION["loggedin"]) || $_SESSION["loggedin"]) { ?>
+                <?php
+                if (session_status() != PHP_SESSION_ACTIVE) {
+                    session_start();
+                }
+                if (isset($_SESSION["loggedin"]) || $_SESSION["loggedin"]) { ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Pacient
+                        </a>
+                        <ul class="dropdown-menu">
+
                             <li>
                                 <a class="dropdown-item" href="../pages/programationsListPage.php">Programarile mele</a>
                             </li>
-                        <?php } ?>
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>

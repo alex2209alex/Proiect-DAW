@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
-<?php include '../templates/head.php';?>
+<?php include '../templates/head.php'; ?>
 <body>
-<?php include '../templates/menu.php';?>
+<?php include '../templates/menu.php'; ?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">

@@ -91,6 +91,6 @@ VALUES ('medic1@test.ro', '$2y$10$ydQG16CeQE5aX4.l3kexW.N8LZj3/ZEIg/6da5s6H4vPCr
 INSERT INTO utilizator(email, parola, nume, prenume, cod_activare , este_activ)
 VALUES ('medic2@test.ro', '$2y$10$ydQG16CeQE5aX4.l3kexW.N8LZj3/ZEIg/6da5s6H4vPCr0QDSqrW', 'Vasile', 'Popescu', '12345678', 1);
 
-INSERT INTO medic(id_utilizator, specializare) VALUES (11, 'Medicina interna');
+INSERT INTO medic(id_utilizator, specializare) VALUES (1, 'Medicina interna');
 
-INSERT INTO medic(id_utilizator, specializare) VALUES (21, 'Chirurgie');
+INSERT INTO medic(id_utilizator, specializare) VALUES (2, 'Chirurgie');

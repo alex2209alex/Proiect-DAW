@@ -6,7 +6,7 @@ class Database
     private string $databaseName;
     private string $username;
     private string $password;
-    private bool $isLocalHost = False;
+    private bool $isLocalHost = FALSE;
     private ?PDO $conn;
 
     public function getConnection(): ?PDO

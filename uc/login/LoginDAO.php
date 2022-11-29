@@ -32,6 +32,7 @@ class LoginDAO
                 }
             }
             $conn->commit();
+            $this->database->closeConnection();
             return $id;
         } catch (Exception $e) {
             $conn->rollback();
@@ -62,6 +63,7 @@ class LoginDAO
                 }
             }
             $conn->commit();
+            $this->database->closeConnection();
             return $id;
         } catch (Exception $e) {
             $conn->rollback();

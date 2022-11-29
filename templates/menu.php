@@ -41,7 +41,7 @@
                 if (session_status() != PHP_SESSION_ACTIVE) {
                     session_start();
                 }
-                if (isset($_SESSION["loggedin"]) || $_SESSION["loggedin"]) { ?>
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">

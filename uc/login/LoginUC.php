@@ -18,4 +18,13 @@ class LoginUC
         }
         return $id;
     }
+
+    public function loginMedic(string $email, string $parola): int
+    {
+        $id = $this->loginDAO->getIdMedicByEmailAndPassword($email, $parola);
+        if ($id == -1) {
+            throw new Exception("Utilizator sau parola invalide");
+        }
+        return $id;
+    }
 }

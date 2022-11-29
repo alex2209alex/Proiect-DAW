@@ -42,7 +42,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["id"] = $id;
                 $_SESSION["username"] = $email;
                 $_SESSION["tip"] = 'P';
-
+                header("location: programationsListPage.php");
+            }
+        }
+        if ($tip == 'M') {
+            $id = $loginUC->loginMedic($email, $password);
+            if ($id != -1) {
+                // Store data in session variables
+                $_SESSION["loggedin"] = true;
+                $_SESSION["id"] = $id;
+                $_SESSION["username"] = $email;
+                $_SESSION["tip"] = 'M';
                 header("location: programationsListPage.php");
             }
         }

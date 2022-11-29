@@ -14,7 +14,7 @@ $user = new User('', '', '', '', '');
 session_start();
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) {
-    header("location: makeProgramationPage.php");
+    header("location: programationsListPage.php");
     exit;
 }
 

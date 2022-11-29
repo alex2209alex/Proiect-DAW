@@ -13,7 +13,7 @@ $tip = 'P';
 session_start();
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) {
-    header("location: makeProgramationPage.php");
+    header("location: programationsListPage.php");
     exit;
 }
 
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["username"] = $email;
                 $_SESSION["tip"] = 'P';
 
-                header("location: makeProgramationPage.php");
+                header("location: programationsListPage.php");
             }
         }
     } catch (Exception $e) {

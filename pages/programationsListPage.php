@@ -1,3 +1,5 @@
+<?php include '../uc/addProgramation/addProgramationController.php';
+?>
 <!doctype html>
 <html lang="en">
 <?php include '../templates/head.php'; ?>

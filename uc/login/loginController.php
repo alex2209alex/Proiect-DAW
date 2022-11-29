@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["id"] = $id;
                 $_SESSION["username"] = $email;
                 $_SESSION["tip"] = 'M';
-                header("location: programationsListPage.php");
+                header("location: medicProgramationsListPage.php");
             }
         }
     } catch (Exception $e) {

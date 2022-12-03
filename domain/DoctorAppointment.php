@@ -6,5 +6,4 @@ class DoctorAppointment
     private int $idPacient;
     private int $idMedic;
     private string $dataProgramarii;
-
 }

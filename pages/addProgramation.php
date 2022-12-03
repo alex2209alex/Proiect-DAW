@@ -37,6 +37,13 @@
                         <option value="<?php echo $value->getId() ?>"><?php echo $value->getLabel() ?></option>
                     <?php } ?>
                 </select>
+                <label for="doctor" class="form-label">Doctor</label>
+                <select name="doctor" id="doctor" class="form-select">
+                    <option value=""></option>
+                    <?php foreach ($medicsArray as $value) { ?>
+                        <option value="<?php echo $value->getId() ?>"><?php echo $value->getLabel() ?></option>
+                    <?php } ?>
+                </select>
             </div>
         </div>
     </form>

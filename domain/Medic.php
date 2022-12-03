@@ -7,6 +7,14 @@ class Medic
     private string $lastName;
     private string $specialization;
 
+    public function __construct(int $id, string $firstName, string $lastName, string $specialization)
+    {
+        $this->id = $id;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->specialization = $specialization;
+    }
+
     public function getLabel(): string
     {
         return $this->firstName . " " . $this->lastName . " - " . $this->specialization;

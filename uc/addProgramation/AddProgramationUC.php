@@ -14,4 +14,9 @@ class AddProgramationUC
     {
         return $this->addProgramationDAO->getAllConsultationIntervals();
     }
+
+    public function getAllMedics(): array
+    {
+        return $this->addProgramationDAO->getAllMedics();
+    }
 }

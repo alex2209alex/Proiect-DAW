@@ -4,8 +4,8 @@ require_once dirname(__FILE__) . "/AddProgramationUC.php";
 
 session_start();
 
-if (!isset($_SESSION["tip"]) != 'P') {
-    header("location: index.php");
+if (!isset($_SESSION["tip"]) || $_SESSION["tip"] != 'P') {
+    header("location: ../index.php");
     exit;
 }
 

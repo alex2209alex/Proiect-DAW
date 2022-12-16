@@ -3,6 +3,7 @@ require_once dirname(__FILE__) . "/../../domain/User.php";
 require_once dirname(__FILE__) . "/AccountConfirmationUC.php";
 
 $errEmailMsg = null;
+$errActivationCodeMsg = null;
 $errMsg = null;
 
 $user = new User('', '', '', '', '');
@@ -13,7 +14,7 @@ $activationCode = null;
 session_start();
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) {
-    header("location: programationsListPage.php");
+    header("location: index.php");
     exit;
 }
 
@@ -25,7 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user->setActivationCode($activationCode);
 
     if ($user->isNotValidEmail()) {
-        $errEmailMsg = "Acest camp este obligatorie. Introduceti o adresa de email valida";
+        $errEmailMsg = "Acest camp este obligatoriu. Introduceti o adresa de email valida";
+    }
+
+    if ($user->isNotValidActivationCode()) {
+        $errActivationCodeMsg = "Acest camp este obligatoriu. Introduceti codul de activare";
     }
 
     try {

@@ -43,22 +43,27 @@ class User extends Person
 
     public function isNotValidLastName(): bool
     {
-        return empty($this->getLastName());;
+        return empty($this->getLastName());
     }
 
     public function isNotValidPassword(): bool
     {
-       return empty($this->getPassword());;
+        return empty($this->getPassword());
     }
 
     public function isNotValidPasswordConfirmation(): bool
     {
-        return empty($this->getPasswordConfirmation());;
+        return empty($this->getPasswordConfirmation());
     }
 
     public function passwordsNotEqual(): bool
     {
         return $this->getPassword() != $this->getPasswordConfirmation();
+    }
+
+    public function isNotValidActivationCode(): bool
+    {
+        return empty($this->getActivationCode());
     }
 
     public function isActive(): bool

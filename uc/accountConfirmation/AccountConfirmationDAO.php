@@ -7,12 +7,12 @@ class AccountConfirmationDAO
 
     public function __construct()
     {
-        $this->setDatabase(new Database());
+        $this->database = new Database();
     }
 
     public function setUserActiveByEmail(string $email): void
     {
-        $conn = $this->getDatabase()->getConnection();
+        $conn = $this->database->getConnection();
         try {
             $conn->beginTransaction();
             $sqlQuery = "UPDATE utilizator SET este_activ = TRUE WHERE email = :email";
@@ -31,13 +31,14 @@ class AccountConfirmationDAO
 
     public function findInactiveUsersByEmailAndActivationCode(string $email, string $activationCode): int
     {
-        $conn = $this->getDatabase()->getConnection();
+        $conn = $this->database->getConnection();
         try {
             $conn->beginTransaction();
             $sqlQuery = "SELECT COUNT(*) FROM utilizator WHERE email = :email AND cod_activare = :activationCode AND este_activ = FALSE";
             $stmt = $conn->prepare($sqlQuery);
             $email = htmlspecialchars(strip_tags($email));
             $stmt->bindParam(":email", $email);
+            $activationCode = htmlspecialchars(strip_tags($activationCode));
             $stmt->bindParam(":activationCode", $activationCode);
             $stmt->execute();
             $count = $stmt->fetchColumn();
@@ -49,15 +50,5 @@ class AccountConfirmationDAO
             $this->database->closeConnection();
             throw $e;
         }
-    }
-
-    public function getDatabase(): Database
-    {
-        return $this->database;
-    }
-
-    public function setDatabase(Database $database): void
-    {
-        $this->database = $database;
     }
 }

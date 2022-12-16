@@ -13,7 +13,7 @@ class AccountConfirmationUC
 
     public function confirmUser(User $user): bool
     {
-        if ($user->isNotValidEmail() || $this->accountConfirmationDAO->findInactiveUsersByEmailAndActivationCode($user->getEmail(), $user->getactivationCode()) == 0) {
+        if ($user->isNotValidEmail() || $user->isNotValidActivationCode() || $this->accountConfirmationDAO->findInactiveUsersByEmailAndActivationCode($user->getEmail(), $user->getactivationCode()) == 0) {
             throw new Exception("Datele introduse nu sunt valide");
         }
         $this->accountConfirmationDAO->setUserActiveByEmail($user->getEmail());

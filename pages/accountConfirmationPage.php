@@ -36,6 +36,11 @@ include '../uc/accountConfirmation/accountConfirmationController.php';
                 <label for="activationCode" class="form-label">Cod activare</label>
                 <input type="text" class="form-control" id="activationCode" autocomplete="false" name="activationCode"
                        value="<?php echo $activationCode ?>">
+                <?php if ($errActivationCodeMsg != null) { ?>
+                    <div class='text-danger'>
+                        <?php echo $errActivationCodeMsg; ?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <div class="row mt-2">

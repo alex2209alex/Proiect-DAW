@@ -1,20 +1,21 @@
 <?php
-require_once dirname(__FILE__) . "/../../domain/User.php";
-require_once dirname(__FILE__) . "/AccountCreationUC.php";
+require_once dirname(__FILE__) . "/../../domain/Pacient.php";
+require_once dirname(__FILE__) . "/PacientAccountCreationUC.php";
 
 $errFirstNameMsg = null;
 $errLastNameMsg = null;
 $errEmailMsg = null;
 $errPasswordMsg = null;
 $errPasswordConfirmationMsg = null;
+$errCnpMsg = null;
 $errMsg = null;
 
-$user = new User('', '', '', '', '');
+$pacient = new Pacient('', '', '', '', '', '');
 
 session_start();
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) {
-    header("location: programationsListPage.php");
+    header("location: /index.php");
     exit;
 }
 
@@ -24,38 +25,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passwordConfirmation = trim($_POST['passwordConfirmation']);
     $firstName = trim($_POST['firstName']);
     $lastName = trim($_POST['lastName']);
+    $cnp = trim($_POST['cnp']);
+    $pacient = new Pacient($cnp, $email, $password, $passwordConfirmation, $firstName, $lastName);
 
-    $user = new User($email, $password, $passwordConfirmation, $firstName, $lastName);
-
-    if ($user->isNotValidEmail()) {
+    if ($pacient->isNotValidEmail()) {
         $errEmailMsg = "Acest camp este obligatorie. Introduceti o adresa de email valida";
     }
 
-    if ($user->isNotValidFirstName()) {
+    if ($pacient->isNotValidFirstName()) {
         $errFirstNameMsg = "Acest camp este obligatoriu";
     }
 
-    if ($user->isNotValidLastName()) {
+    if ($pacient->isNotValidLastName()) {
         $errLastNameMsg = "Acest camp este obligatoriu";
     }
 
-    if ($user->isNotValidPassword()) {
+    if ($pacient->isNotValidPassword()) {
         $errPasswordMsg = "Acest camp este obligatoriu";
     }
 
-    if ($user->isNotValidPasswordConfirmation()) {
+    if ($pacient->isNotValidPasswordConfirmation()) {
         $errPasswordConfirmationMsg = "Acest camp este obligatoriu";
     }
 
-    if ($user->passwordsNotEqual()) {
+    if ($pacient->passwordsNotEqual()) {
         $errPasswordMsg = "Parola si confirmare parola trebuie sa coincida";
         $errPasswordConfirmationMsg = "Parola si confirmare parola trebuie sa coincida";
     }
 
-    try {
-        $accountCreationUC = new AccountCreationUC();
-        $accountCreationUC->addUser($user);
+    if ($pacient->isNotValidCnp()) {
+        $errCnpMsg = "CNP-ul este obligatoriu si trebuie sa contina 13 cifre";
+    }
 
+    try {
+        $accountCreationUC = new PacientAccountCreationUC();
+        $accountCreationUC->addPacient($pacient);
         header("location: accountConfirmationPage.php");
     } catch (Exception $e) {
         $errMsg = $e->getMessage();

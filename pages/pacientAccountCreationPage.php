@@ -1,5 +1,5 @@
 <?php
-include '../uc/accountCreation/accountCreationController.php';
+include '../uc/pacientAccountCreation/pacientAccountCreationController.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,12 +17,12 @@ include '../uc/accountCreation/accountCreationController.php';
             <?php } ?>
         </div>
     </div>
-    <form action="/pages/accountCreationPage.php" method="post" novalidate>
+    <form action="/pages/pacientAccountCreationPage.php" method="post" novalidate>
         <div class="row mt-2">
             <div class="col-12">
                 <label for="email" class="form-label">Adresa de email</label>
                 <input type="email" class="form-control" id="email" autocomplete="false" name="email"
-                       value="<?php echo $user->getEmail() ?>">
+                       value="<?php echo $pacient->getEmail() ?>">
                 <?php if ($errEmailMsg != null) { ?>
                     <div class='text-danger'>
                         <?php echo $errEmailMsg; ?>
@@ -34,7 +34,7 @@ include '../uc/accountCreation/accountCreationController.php';
             <div class="col-12">
                 <label for="lastName" class="form-label">Nume</label>
                 <input type="text" class="form-control" id="lastName" autocomplete="false" name="lastName"
-                       value="<?php echo $user->getLastName() ?>">
+                       value="<?php echo $pacient->getLastName() ?>">
                 <?php if ($errLastNameMsg != null) { ?>
                     <div class='text-danger'>
                         <?php echo $errLastNameMsg; ?>
@@ -46,7 +46,7 @@ include '../uc/accountCreation/accountCreationController.php';
             <div class="col-12">
                 <label for="firstName" class="form-label">Prenume</label>
                 <input type="text" class="form-control" id="firstName" autocomplete="false" name="firstName"
-                       value="<?php echo $user->getFirstName() ?>">
+                       value="<?php echo $pacient->getFirstName() ?>">
                 <?php if ($errFirstNameMsg != null) { ?>
                     <div class='text-danger'>
                         <?php echo $errFirstNameMsg; ?>
@@ -56,9 +56,21 @@ include '../uc/accountCreation/accountCreationController.php';
         </div>
         <div class="row mt-2">
             <div class="col-12">
+                <label for="cnp" class="form-label">CNP</label>
+                <input type="text" class="form-control" id="cnp" autocomplete="false" name="cnp"
+                       value="<?php echo $pacient->getCnp() ?>">
+                <?php if ($errCnpMsg != null) { ?>
+                    <div class='text-danger'>
+                        <?php echo $errCnpMsg; ?>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
                 <label for="password" class="form-label">Parola</label>
                 <input type="password" class="form-control" id="password" autocomplete="false" name="password"
-                       value="<?php echo $user->getPassword() ?>">
+                       value="<?php echo $pacient->getPassword() ?>">
                 <?php if ($errPasswordMsg != null) { ?>
                     <div class='text-danger'>
                         <?php echo $errPasswordMsg; ?>
@@ -70,7 +82,7 @@ include '../uc/accountCreation/accountCreationController.php';
             <div class="col-12">
                 <label for="passwordConfirmation" class="form-label">Confirmare parola</label>
                 <input type="password" class="form-control" id="passwordConfirmation" autocomplete="false"
-                       name="passwordConfirmation" value="<?php echo $user->getPasswordConfirmation() ?>">
+                       name="passwordConfirmation" value="<?php echo $pacient->getPasswordConfirmation() ?>">
                 <?php if ($errPasswordConfirmationMsg != null) { ?>
                     <div class='text-danger'>
                         <?php echo $errPasswordConfirmationMsg; ?>

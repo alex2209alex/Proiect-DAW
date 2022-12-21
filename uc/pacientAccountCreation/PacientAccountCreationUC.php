@@ -1,30 +1,30 @@
 <?php
-require_once dirname(__FILE__) . "/AccountCreationDAO.php";
-require_once dirname(__FILE__) . "/../../domain/User.php";
+require_once dirname(__FILE__) . "/PacientAccountCreationDAO.php";
+require_once dirname(__FILE__) . "/../../domain/Pacient.php";
 require_once dirname(__FILE__) . "/../../mailer/class.phpmailer.php";
 require_once dirname(__FILE__) . "/../../mailer/mail_config.php";
 
-class AccountCreationUC
+class PacientAccountCreationUC
 {
-    private AccountCreationDAO $accountCreationDAO;
+    private PacientAccountCreationDAO $accountCreationDAO;
 
     public function __construct()
     {
-        $this->accountCreationDAO = new AccountCreationDAO();
+        $this->accountCreationDAO = new PacientAccountCreationDAO();
     }
 
-    public function addUser(User $user): int
+    public function addPacient(Pacient $pacient): int
     {
-        if ($user->isNotValid()) {
+        if ($pacient->isNotValid()) {
             throw new Exception("Datele introduse nu sunt valide");
         }
-        if (!$this->accountCreationDAO->isEmailUnique($user->getEmail())) {
+        if (!$this->accountCreationDAO->isEmailUnique($pacient->getEmail())) {
             throw new Exception("Exista un cont de pacient cu acelasi email");
         }
-        $user->setactivationCode($user->generateActivationCode());
-        $user->setIsActive(false);
-        $this->sendEmail($user->getEmail(), $user->getFirstName(), $user->getLastName(), $user->getActivationCode());
-        return $this->accountCreationDAO->createAccount($user);
+        $pacient->setactivationCode($pacient->generateActivationCode());
+        $pacient->setIsActive(false);
+        $this->sendEmail($pacient->getEmail(), $pacient->getFirstName(), $pacient->getLastName(), $pacient->getActivationCode());
+        return $this->accountCreationDAO->createPacientAccount($pacient);
     }
 
     public function sendEmail(string $email, string $firstName, string $lastName, string $activationCode): void
@@ -33,7 +33,7 @@ class AccountCreationUC
         $message = "Codul dumneavoastra de validare este " . $activationCode;
         // În caz că vre-un rând depășește N caractere, trebuie să utilizăm
         // wordwrap()
-        $message = wordwrap($message, 20, "<br />\n");
+        $message = wordwrap($message, 20, "<br/>\n");
         $mail = new PHPMailer(true);
         $mail->IsSMTP();
         try {

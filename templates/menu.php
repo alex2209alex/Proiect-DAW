@@ -27,7 +27,8 @@
                             session_start();
                         }
                         if (!isset($_SESSION["loggedin"]) || !$_SESSION["loggedin"]) { ?>
-                            <li><a class="dropdown-item" href="../pages/accountCreationPage.php">Creare cont</a></li>
+                            <li><a class="dropdown-item" href="../pages/pacientAccountCreationPage.php">Creare cont</a>
+                            </li>
                             <li><a class="dropdown-item" href="../pages/accountConfirmationPage.php">Confirmare cont</a>
                             </li>
                             <li><a class="dropdown-item" href="../pages/loginPage.php">Autentificare</a></li>
@@ -41,14 +42,13 @@
                 if (session_status() != PHP_SESSION_ACTIVE) {
                     session_start();
                 }
-                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) { ?>
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] && isset($_SESSION["tip"]) && $_SESSION["tip"] == 'P') { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
                             Pacient
                         </a>
                         <ul class="dropdown-menu">
-
                             <li>
                                 <a class="dropdown-item" href="../pages/programationsListPage.php">Programarile mele</a>
                             </li>

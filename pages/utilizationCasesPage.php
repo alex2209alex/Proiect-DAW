@@ -74,6 +74,7 @@
                 <li>
                     Consultare rezultate analize
                 </li>
+                <li>Deconectare din aplicatie</li>
             </ol>
             </p>
             <p>
@@ -103,6 +104,7 @@
                         </li>
                     </ul>
                 </li>
+                <li>Deconectare din aplicatie</li>
             </ol>
             </p>
             <p>
@@ -110,6 +112,7 @@
             <ol>
                 <li>Autentificare in aplicatie</li>
                 <li>Completare rezultate analize</li>
+                <li>Deconectare din aplicatie</li>
             </ol>
             </p>
             <p>
@@ -118,6 +121,7 @@
                 <li>Autentificare in aplicatie</li>
                 <li>Creare utilizator medic</li>
                 <li>Creare utilizator laborant</li>
+                <li>Deconectare din aplicatie</li>
             </ol>
             </p>
             <p>Mai jos este o diagrama a cazurilor de utilizare.</p>

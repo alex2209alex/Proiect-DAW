@@ -27,4 +27,22 @@ class LoginUC
         }
         return $id;
     }
+
+    public function loginLaborant(string $email, string $parola): int
+    {
+        $id = $this->loginDAO->getIdLaborantByEmailAndPassword($email, $parola);
+        if ($id == -1) {
+            throw new Exception("Utilizator sau parola invalide");
+        }
+        return $id;
+    }
+
+    public function loginAdmin(string $email, string $parola): int
+    {
+        $id = $this->loginDAO->getIdAdminByEmailAndPassword($email, $parola);
+        if ($id == -1) {
+            throw new Exception("Utilizator sau parola invalide");
+        }
+        return $id;
+    }
 }

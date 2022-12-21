@@ -58,6 +58,20 @@ include '../uc/login/loginController.php';
                         Medic
                     </label>
                 </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tip"
+                           id="laborant" <?php if ($tip == 'L') { ?> checked <?php } ?> value="L">
+                    <label class="form-check-label" for="laborant">
+                        Laborant
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tip"
+                           id="admin" <?php if ($tip == 'A') { ?> checked <?php } ?> value="A">
+                    <label class="form-check-label" for="admin">
+                        Admin
+                    </label>
+                </div>
             </div>
         </div>
         <div class="row mt-2">

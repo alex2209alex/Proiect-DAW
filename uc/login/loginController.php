@@ -8,12 +8,12 @@ $errMsg = null;
 
 $password = '';
 $email = '';
-$tip = 'P';
+$tip = '';
 
 session_start();
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) {
-    header("location: programationsListPage.php");
+    header("location: /index.php");
     exit;
 }
 
@@ -42,10 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["id"] = $id;
                 $_SESSION["username"] = $email;
                 $_SESSION["tip"] = 'P';
-                header("location: programationsListPage.php");
+                header("location: /index.php");
             }
         }
-        if ($tip == 'M') {
+        else if ($tip == 'M') {
             $id = $loginUC->loginMedic($email, $password);
             if ($id != -1) {
                 // Store data in session variables
@@ -53,7 +53,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["id"] = $id;
                 $_SESSION["username"] = $email;
                 $_SESSION["tip"] = 'M';
-                header("location: medicProgramationsListPage.php");
+                header("location: /index.php");
+            }
+        }
+        else if ($tip == 'L') {
+            $id = $loginUC->loginLaborant($email, $password);
+            if ($id != -1) {
+                // Store data in session variables
+                $_SESSION["loggedin"] = true;
+                $_SESSION["id"] = $id;
+                $_SESSION["username"] = $email;
+                $_SESSION["tip"] = 'L';
+                header("location: /index.php");
+            }
+        }
+        else if ($tip == 'A') {
+            $id = $loginUC->loginAdmin($email, $password);
+            if ($id != -1) {
+                // Store data in session variables
+                $_SESSION["loggedin"] = true;
+                $_SESSION["id"] = $id;
+                $_SESSION["username"] = $email;
+                $_SESSION["tip"] = 'A';
+                header("location: /index.php");
             }
         }
     } catch (Exception $e) {

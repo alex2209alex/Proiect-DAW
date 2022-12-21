@@ -1,5 +1,5 @@
 <?php
-$username='----';
-$password='---';
+$username = '----';
+$password = '---';
 
 ?>

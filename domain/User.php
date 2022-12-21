@@ -12,7 +12,6 @@ class User extends Person
     public function __construct(string $email, string $password, string $passwordConfirmation, string $firstName, string $lastName)
     {
         parent::__construct($firstName, $lastName);
-
         $this->email = $email;
         $this->password = $password;
         $this->passwordConfirmation = $passwordConfirmation;
@@ -31,9 +30,7 @@ class User extends Person
 
     public function isNotValidEmail(): bool
     {
-        $isEmpty = empty($this->getEmail());
-
-        return $isEmpty || !filter_var($this->getEmail(), FILTER_VALIDATE_EMAIL);
+        return empty($this->email) || !filter_var($this->email, FILTER_VALIDATE_EMAIL);
     }
 
     public function isNotValidFirstName(): bool
@@ -48,22 +45,22 @@ class User extends Person
 
     public function isNotValidPassword(): bool
     {
-        return empty($this->getPassword());
+        return empty($this->password);
     }
 
     public function isNotValidPasswordConfirmation(): bool
     {
-        return empty($this->getPasswordConfirmation());
+        return empty($this->passwordConfirmation);
     }
 
     public function passwordsNotEqual(): bool
     {
-        return $this->getPassword() != $this->getPasswordConfirmation();
+        return $this->password != $this->passwordConfirmation;
     }
 
     public function isNotValidActivationCode(): bool
     {
-        return empty($this->getActivationCode());
+        return empty($this->activationCode);
     }
 
     public function isActive(): bool
@@ -81,29 +78,14 @@ class User extends Person
         return $this->password;
     }
 
-    public function setPassword(string $password): void
-    {
-        $this->password = $password;
-    }
-
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): void
-    {
-        $this->email = $email;
-    }
-
     public function getPasswordConfirmation(): string
     {
         return $this->passwordConfirmation;
-    }
-
-    public function setPasswordConfirmation(string $passwordConfirmation): void
-    {
-        $this->passwordConfirmation = $passwordConfirmation;
     }
 
     public function getActivationCode(): string

@@ -16,6 +16,15 @@ CREATE TABLE utilizator (
     PRIMARY KEY (id_utilizator)
 );
 
+CREATE TABLE admin
+(
+    id_utilizator int NOT NULL,
+    permisiuni_adaugare_medici boolean default false,
+    permisiuni_adaugare_laboranti boolean default false,
+    PRIMARY KEY (id_utilizator),
+    FOREIGN KEY (id_utilizator) references utilizator(id_utilizator)
+);
+
 CREATE TABLE medic
 (
     id_utilizator int NOT NULL,
@@ -24,11 +33,12 @@ CREATE TABLE medic
     FOREIGN KEY (id_utilizator) references utilizator(id_utilizator)
 );
 
-CREATE TABLE intervale_de_consultatie
+CREATE TABLE laborant
 (
-    id_interval  int NOT NULL AUTO_INCREMENT,
-    interval_orar varchar(255) NOT NULL,
-    primary key (id_interval)
+    id_utilizator int NOT NULL,
+    specializare varchar(255) NOT NULL,
+    PRIMARY KEY (id_utilizator),
+    FOREIGN KEY (id_utilizator) references utilizator(id_utilizator)
 );
 
 CREATE TABLE pacient
@@ -37,6 +47,13 @@ CREATE TABLE pacient
     cnp varchar(255) NOT NULL,
     primary key (id_utilizator),
     FOREIGN KEY (id_utilizator) references utilizator(id_utilizator)
+);
+
+CREATE TABLE intervale_de_consultatie
+(
+    id_interval  int NOT NULL AUTO_INCREMENT,
+    interval_orar varchar(255) NOT NULL,
+    primary key (id_interval)
 );
 
 CREATE TABLE programare_consultatie

@@ -19,7 +19,7 @@ class PacientAccountCreationUC
             throw new Exception("Datele introduse nu sunt valide");
         }
         if (!$this->accountCreationDAO->isEmailUnique($pacient->getEmail())) {
-            throw new Exception("Exista un cont de pacient cu acelasi email");
+            throw new Exception("Exista un cont cu acelasi email");
         }
         $pacient->setactivationCode($pacient->generateActivationCode());
         $pacient->setIsActive(false);

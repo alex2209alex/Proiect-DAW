@@ -55,6 +55,24 @@
                         </ul>
                     </li>
                 <?php } ?>
+
+                <?php
+                if (session_status() != PHP_SESSION_ACTIVE) {
+                    session_start();
+                }
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] && isset($_SESSION["tip"]) && $_SESSION["tip"] == 'A') { ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../pages/medicAccountCreationPage.php">Adauga medic</a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>

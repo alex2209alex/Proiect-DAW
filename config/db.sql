@@ -1,8 +1,10 @@
 DROP TABLE IF EXISTS fisa_consultatie;
 DROP TABLE IF EXISTS programare_consultatie;
-DROP TABLE IF EXISTS pacient;
 DROP TABLE IF EXISTS intervale_de_consultatie;
+DROP TABLE IF EXISTS pacient;
+DROP TABLE IF EXISTS laborant;
 DROP TABLE IF EXISTS medic;
+DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS utilizator;
 
 CREATE TABLE utilizator (
@@ -19,8 +21,7 @@ CREATE TABLE utilizator (
 CREATE TABLE admin
 (
     id_utilizator int NOT NULL,
-    permisiuni_adaugare_medici boolean default false,
-    permisiuni_adaugare_laboranti boolean default false,
+
     PRIMARY KEY (id_utilizator),
     FOREIGN KEY (id_utilizator) references utilizator(id_utilizator)
 );
@@ -84,6 +85,11 @@ CREATE TABLE fisa_consultatie
     foreign key(id_programare) references programare_consultatie(id_programare)
 );
 
+INSERT INTO utilizator(email, parola, nume, prenume, cod_activare , este_activ)
+VALUES ('alex.pavel2002@gmail.com', '$2y$10$ydQG16CeQE5aX4.l3kexW.N8LZj3/ZEIg/6da5s6H4vPCr0QDSqrW', 'Pavel', 'Alexandru', '12345678', 1);
+
+INSERT INTO admin(id_utilizator) VALUES ((SELECT id_utilizator FROM utilizator WHERE email = 'alex.pavel2002@gmail.com'));
+
 INSERT INTO intervale_de_consultatie(interval_orar)
 VALUES('9-9:30');
 
@@ -101,13 +107,3 @@ VALUES('11-11:30');
 
 INSERT INTO intervale_de_consultatie(interval_orar)
 VALUES('11:30-12');
-
-INSERT INTO utilizator(email, parola, nume, prenume, cod_activare , este_activ)
-VALUES ('medic1@test.ro', '$2y$10$ydQG16CeQE5aX4.l3kexW.N8LZj3/ZEIg/6da5s6H4vPCr0QDSqrW', 'Popa', 'Ion', '12345678', 1);
-
-INSERT INTO utilizator(email, parola, nume, prenume, cod_activare , este_activ)
-VALUES ('medic2@test.ro', '$2y$10$ydQG16CeQE5aX4.l3kexW.N8LZj3/ZEIg/6da5s6H4vPCr0QDSqrW', 'Vasile', 'Popescu', '12345678', 1);
-
-INSERT INTO medic(id_utilizator, specializare) VALUES (1, 'Medicina interna');
-
-INSERT INTO medic(id_utilizator, specializare) VALUES (2, 'Chirurgie');

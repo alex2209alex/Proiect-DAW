@@ -69,6 +69,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="dropdown-item" href="../pages/medicAccountCreationPage.php">Adauga medic</a>
+                                <a class="dropdown-item" href="../pages/labWorkerAccountCreationPage.php">Adauga laborant</a>
                             </li>
                         </ul>
                     </li>

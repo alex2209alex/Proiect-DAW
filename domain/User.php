@@ -33,16 +33,6 @@ class User extends Person
         return empty($this->email) || !filter_var($this->email, FILTER_VALIDATE_EMAIL);
     }
 
-    public function isNotValidFirstName(): bool
-    {
-        return empty($this->getFirstName());
-    }
-
-    public function isNotValidLastName(): bool
-    {
-        return empty($this->getLastName());
-    }
-
     public function isNotValidPassword(): bool
     {
         return empty($this->password);

@@ -11,6 +11,16 @@ class Person
         $this->lastName = $lastName;
     }
 
+    public function isNotValidFirstName(): bool
+    {
+        return empty($this->firstName);
+    }
+
+    public function isNotValidLastName(): bool
+    {
+        return empty($this->lastName);
+    }
+
     public function getFirstName(): string
     {
         return $this->firstName;

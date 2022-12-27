@@ -25,11 +25,4 @@ class Pacient extends User
     {
         return $this->cnp;
     }
-
-    public function setCnp(string $cnp): void
-    {
-        $this->cnp = $cnp;
-    }
-
-
 }

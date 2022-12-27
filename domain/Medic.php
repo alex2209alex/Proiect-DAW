@@ -4,6 +4,7 @@ require_once dirname(__FILE__) . "/../domain/User.php";
 class Medic extends User
 {
     private string $specialization;
+    private int $id;
 
     public function __construct(string $specialization, string $email, string $password, string $passwordConfirmation, string $firstName, string $lastName)
     {
@@ -29,5 +30,15 @@ class Medic extends User
     public function getSpecialization(): string
     {
         return $this->specialization;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 }

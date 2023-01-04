@@ -97,9 +97,9 @@ include '../uc/pacientAccountCreation/pacientAccountCreationController.php';
             </div>
         </div>
         <div class="g-recaptcha" data-sitekey="6LcnIs0jAAAAAGkLBjtjjt6l1iKKCQ_49zbctjFo"></div>
-        <div class="row mt-2">
+        <div class="row mt-2 mb-2">
             <div class="col-12">
-                <button type="submit" class="btn btn-primary" name="submit" value="submit">Creaza cont</button>
+                <input type="submit" name="submit" value="Creeaza cont">
             </div>
         </div>
     </form>

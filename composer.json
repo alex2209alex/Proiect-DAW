@@ -10,6 +10,7 @@
     }
   ],
   "require": {
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "google/recaptcha": "1.2.4"
   }
 }

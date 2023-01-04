@@ -96,6 +96,7 @@ include '../uc/pacientAccountCreation/pacientAccountCreationController.php';
                     confirmare cont </p>
             </div>
         </div>
+        <div class="g-recaptcha" data-sitekey="6LcnIs0jAAAAAGkLBjtjjt6l1iKKCQ_49zbctjFo"></div>
         <div class="row mt-2">
             <div class="col-12">
                 <button type="submit" class="btn btn-primary" name="submit" value="submit">Creaza cont</button>

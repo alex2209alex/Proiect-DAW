@@ -4,6 +4,7 @@ include '../uc/accountConfirmation/accountConfirmationController.php';
 <!doctype html>
 <html lang="en">
 <?php include '../templates/head.php'; ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <body>
 <?php include '../templates/menu.php'; ?>
 <div class="container-fluid">

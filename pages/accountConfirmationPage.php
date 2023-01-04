@@ -30,7 +30,6 @@ include '../uc/accountConfirmation/accountConfirmationController.php';
                 <?php } ?>
             </div>
         </div>
-
         <div class="row mt-2">
             <div class="col-12">
                 <label for="activationCode" class="form-label">Cod activare</label>
@@ -43,10 +42,12 @@ include '../uc/accountConfirmation/accountConfirmationController.php';
                 <?php } ?>
             </div>
         </div>
-        <div class="row mt-2">
+        <div class="g-recaptcha mt-2" data-sitekey="6LcnIs0jAAAAAGkLBjtjjt6l1iKKCQ_49zbctjFo"></div>
+        <div class="row mt-2 mb-2">
             <div class="col-12">
-                <button type="submit" class="btn btn-primary" name="submit" value="submit">Confirmare</button>
+                <input type="submit" name="submit" value="Confirma contul">
             </div>
+        </div>
         </div>
     </form>
 </div>

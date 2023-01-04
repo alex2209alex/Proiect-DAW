@@ -33,11 +33,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errActivationCodeMsg = "Acest camp este obligatoriu. Introduceti codul de activare";
     }
 
-    try {
-        $accountConfirmationUC = new AccountConfirmationUC();
-        $accountConfirmationUC->confirmUser($user);
-        header("location: loginPage.php");
-    } catch (Exception $e) {
-        $errMsg = $e->getMessage();
+    $captcha = $_POST['g-recaptcha-response'];
+    if (!$captcha) {
+        $errMsg = "Nu ati verificat faptul ca nu sunteti un robot";
+    } else {
+        $secretKey = "6LcnIs0jAAAAACK_rLi4zjy-P-9RfcXttMdlo3Lh";
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) . '&response=' . urlencode($captcha) . '&ip=' . urlencode($ip);
+        $response = file_get_contents($url);
+        $responseKeys = json_decode($response, true);
+        if ($responseKeys["success"]) {
+            try {
+                $accountConfirmationUC = new AccountConfirmationUC();
+                $accountConfirmationUC->confirmUser($user);
+                header("location: loginPage.php");
+            } catch (Exception $e) {
+                $errMsg = $e->getMessage();
+            }
+        } else {
+            echo '<h2>Esti un robot</h2>';
+        }
     }
 }

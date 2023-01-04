@@ -1,5 +1,4 @@
 <?php include '../uc/medicConsultationsList/medicConsultationsListController.php'; ?>
-?>
 <!doctype html>
 <html lang="en">
 <?php include '../templates/head.php'; ?>

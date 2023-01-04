@@ -60,6 +60,24 @@
                 if (session_status() != PHP_SESSION_ACTIVE) {
                     session_start();
                 }
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] && isset($_SESSION["tip"]) && $_SESSION["tip"] == 'M') { ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Medic
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../pages/medicConsultationsListPage.php">Programarile mele</a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } ?>
+
+                <?php
+                if (session_status() != PHP_SESSION_ACTIVE) {
+                    session_start();
+                }
                 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] && isset($_SESSION["tip"]) && $_SESSION["tip"] == 'A') { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"

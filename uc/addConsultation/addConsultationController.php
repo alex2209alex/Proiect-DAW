@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         $addConsultationUC = new AddConsultationUC();
         $addConsultationUC->addConsultation($consultation);
-        header("location: programationsListPage.php");
+        header("location: pacientConsultationsListPage.php");
     } catch (Exception $e) {
         $errMsg = $e->getMessage();
     }

@@ -27,7 +27,10 @@ class AddConsultationUC
         if($consultation->isNotValid()) {
             throw new Exception("Datele introduse nu sunt valide");
         }
-        if (!$this->addConsultationDAO->isConsultationUnique($consultation->getIdInterval(), $consultation->getIdMedic(), $consultation->getConsultationDate())) {
+        if (!$this->addConsultationDAO->isConsultationUniqueForPacient($consultation->getIdPacient(), $consultation->getConsultationDate())) {
+            throw new Exception("Aveti deja o programare la data selectata");
+        }
+        if (!$this->addConsultationDAO->isConsultationUniqueForMedic($consultation->getIdInterval(), $consultation->getIdMedic(), $consultation->getConsultationDate())) {
             throw new Exception("Doctorul are deja programare la data si ora selectate");
         }
         return $this->addConsultationDAO->createConsultation($consultation);

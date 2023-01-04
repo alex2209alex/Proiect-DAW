@@ -14,7 +14,30 @@ class AddConsultationDAO
         $this->database = new Database();
     }
 
-    public function isConsultationUnique(int $idInterval, int $idMedic, string $consultationDate): bool
+    public function isConsultationUniqueForPacient(int $idPacient, string $consultationDate): bool
+    {
+        $conn = $this->database->getConnection();
+        try {
+            $conn->beginTransaction();
+            $sqlQuery = "SELECT COUNT(*) FROM programare_consultatie WHERE id_pacient = :idPacient AND data_programare = :consultationDate";
+            $stmt = $conn->prepare($sqlQuery);
+            $idPacient = htmlspecialchars(strip_tags($idPacient));
+            $consultationDate = htmlspecialchars(strip_tags($consultationDate));
+            $stmt->bindParam(":idPacient", $idPacient);
+            $stmt->bindParam(":consultationDate", $consultationDate);
+            $stmt->execute();
+            $count = $stmt->fetchColumn();
+            $conn->commit();
+            $this->database->closeConnection();
+            return $count == 0;
+        } catch (Exception $e) {
+            $conn->rollback();
+            $this->database->closeConnection();
+            throw $e;
+        }
+    }
+
+    public function isConsultationUniqueForMedic(int $idInterval, int $idMedic, string $consultationDate): bool
     {
         $conn = $this->database->getConnection();
         try {

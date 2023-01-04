@@ -50,7 +50,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="../pages/programationsListPage.php">Programarile mele</a>
+                                <a class="dropdown-item" href="../pages/pacientConsultationsListPage.php">Programarile mele</a>
                             </li>
                         </ul>
                     </li>

@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . "/../../domain/medicConsultation.php";
+require_once dirname(__FILE__) . "/../../domain/MedicConsultation.php";
 require_once dirname(__FILE__) . "/MedicConsultationsListUC.php";
 
 $errMsg = null;

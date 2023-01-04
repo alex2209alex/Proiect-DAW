@@ -61,9 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$captcha) {
         $errMsg = "Nu ati verificat faptul ca nu sunteti un robot";
     } else {
-        $secretKey = "SECRET-KEY";
+        $secretKey = "6LcnIs0jAAAAACK_rLi4zjy-P-9RfcXttMdlo3Lh";
         $ip = $_SERVER['REMOTE_ADDR'];
-        $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) . '&response=' . urlencode($captcha);
+        $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) . '&response=' . urlencode($captcha) . '&ip=' . urlencode($ip);
         $response = file_get_contents($url);
         $responseKeys = json_decode($response, true);
         if ($responseKeys["success"]) {

@@ -78,9 +78,6 @@ CREATE TABLE fisa_consultatie
     diagnostic varchar(255) NOT NULL,
     analize_recomandate varchar(255),
     tratament_medicamentos_recomandat varchar(255),
-    investigatii_recomandate varchar(255),
-    alergii varchar(255),
-    boli_cronice varchar(255),
     primary key(id_fisa),
     foreign key(id_programare) references programare_consultatie(id_programare)
 );

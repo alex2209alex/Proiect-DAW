@@ -87,4 +87,9 @@ class ConsultationFile
     {
         $this->recomendedTreatement = $recomendedTreatement;
     }
+
+    public function setIdConsultation(int $idConsultation): void
+    {
+        $this->idConsultation = $idConsultation;
+    }
 }

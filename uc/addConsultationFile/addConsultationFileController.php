@@ -38,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $consultationFile->setDiagnostic($diagnostic);
     $consultationFile->setRecomendedAnalyses($recomendedAnalyses);
     $consultationFile->setRecomendedTreatement($recomendedTreatement);
+    $consultationFile->setIdConsultation($idConultation);
 
     if($consultationFile->isNotValidDiagnostic()) {
         $errDiagnosticMsg = "Acest camp este obligatoriu";

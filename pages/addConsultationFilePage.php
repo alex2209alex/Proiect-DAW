@@ -16,6 +16,7 @@
         </div>
     </div>
     <form action="/pages/addConsultationFilePage.php?id=<?php echo $consultationId ?>" method="post" novalidate>
+        <input type="hidden" name="csfrToken" value="<?php echo $_SESSION["csfrToken"] ?>">
         <div class="row mt-2">
             <div class="col-12">
                 <label for="pacientName" class="form-label">Nume pacient</label>
@@ -40,7 +41,7 @@
         <div class="row mt-2">
             <div class="col-12">
                 <label for="diagnostic" class="form-label">Diagnostic</label>
-                <input type="text" class="form-control" id="diagnostic" autocomplete="false" name="diagnostic">
+                <textarea class="form-control" id="diagnostic" autocomplete="false" name="diagnostic"></textarea>
                 <?php if ($errDiagnosticMsg != null) { ?>
                     <div class='text-danger'>
                         <?php echo $errDiagnosticMsg; ?>
@@ -51,18 +52,19 @@
         <div class="row mt-2">
             <div class="col-12">
                 <label for="recomendedAnalyses" class="form-label">Analize recomandate</label>
-                <input type="text" class="form-control" id="recomendedAnalyses" autocomplete="false" name="recomendedAnalyses">
+                <textarea class="form-control" id="recomendedAnalyses" autocomplete="false" name="recomendedAnalyses"></textarea>
             </div>
         </div>
         <div class="row mt-2">
             <div class="col-12">
                 <label for="recomendedTreatement" class="form-label">Tratament recomandat</label>
-                <input type="text" class="form-control" id="recomendedTreatement" autocomplete="false" name="recomendedTreatement">
+                <textarea class="form-control" id="recomendedTreatement" autocomplete="false" name="recomendedTreatement"></textarea>
             </div>
         </div>
         <div class="row mt-2 mb-2">
             <div class="col-12">
-                <input type="submit" name="submit" value="Salveaza">
+                <button type="submit" class="btn btn-primary" name="submit">Salveaza</button>
+                <a type="button" class="btn btn-secondary" href="/pages/medicConsultationsListPage.php">Anuleaza</a>
             </div>
         </div>
     </form>

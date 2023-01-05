@@ -1,6 +1,7 @@
 <?php
 require_once dirname(__FILE__) . "/../../domain/ConsultationFile.php";
 require_once dirname(__FILE__) . "/AddConsultationFileUC.php";
+require_once dirname(__FILE__) . "/../RandomStringUtils.php";
 
 $errMsg = null;
 $errDiagnosticMsg = null;
@@ -31,7 +32,14 @@ if (!isset($_SESSION["id"]) || $_SESSION["id"] != $consultationFile->getMedicId(
     exit;
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $randomStringUtils = new RandomStringUtils();
+    $csfrToken = $randomStringUtils->generateString();
+    $_SESSION["csfrToken"] = $csfrToken;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $diagnostic = trim($_POST['diagnostic']);
     $recomendedAnalyses = trim($_POST['recomendedAnalyses']);
     $recomendedTreatement = trim($_POST['recomendedTreatement']);
@@ -45,6 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
+        if($_SESSION["csfrToken"] != trim($_POST['csfrToken'])) {
+            header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
+            exit;
+        }
         $addConsultationFileUC = new AddConsultationFileUC();
         $addConsultationFileUC->addOrUpdateConsultationFile($consultationFile);
         header("location: medicConsultationsListPage.php");

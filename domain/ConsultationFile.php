@@ -2,11 +2,7 @@
 
 class ConsultationFile
 {
-    /*
-     * TODO
-     * constructors
-     */
-    private int $idConsultation;
+    private int $consultationId;
     private string $pacientName;
     private string $cnp;
     private string $medicName;
@@ -33,9 +29,14 @@ class ConsultationFile
         return empty($this->diagnostic);
     }
 
-    public function getIdConsultation(): int
+    public function getConsultationId(): int
     {
-        return $this->idConsultation;
+        return $this->consultationId;
+    }
+
+    public function setConsultationId(int $consultationId): void
+    {
+        $this->consultationId = $consultationId;
     }
 
     public function getPacientName(): string
@@ -86,10 +87,5 @@ class ConsultationFile
     public function setRecomendedTreatement(string $recomendedTreatement): void
     {
         $this->recomendedTreatement = $recomendedTreatement;
-    }
-
-    public function setIdConsultation(int $idConsultation): void
-    {
-        $this->idConsultation = $idConsultation;
     }
 }

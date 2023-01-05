@@ -15,7 +15,7 @@
             <?php } ?>
         </div>
     </div>
-    <form action="/pages/addConsultationFilePage.php?id=<?php echo $idConultation ?>" method="post" novalidate>
+    <form action="/pages/addConsultationFilePage.php?id=<?php echo $consultationId ?>" method="post" novalidate>
         <div class="row mt-2">
             <div class="col-12">
                 <label for="pacientName" class="form-label">Nume pacient</label>

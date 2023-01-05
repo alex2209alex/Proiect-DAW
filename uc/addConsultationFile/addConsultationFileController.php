@@ -22,9 +22,9 @@ if (!isset($_SESSION["loggedin"]) || !$_SESSION["loggedin"]) {
 $url = basename($_SERVER['REQUEST_URI']);
 $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
-$idConultation = $params['id'];
+$consultationId = $params['id'];
 
-$consultationFile = $addConsultationFileUC->getConsultationPacientAndMedic($idConultation);
+$consultationFile = $addConsultationFileUC->getConsultationPacientAndMedic($consultationId);
 
 if (!isset($_SESSION["id"]) || $_SESSION["id"] != $consultationFile->getMedicId()) {
     header("location: /index.php");
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $consultationFile->setDiagnostic($diagnostic);
     $consultationFile->setRecomendedAnalyses($recomendedAnalyses);
     $consultationFile->setRecomendedTreatement($recomendedTreatement);
-    $consultationFile->setIdConsultation($idConultation);
+    $consultationFile->setConsultationId($consultationId);
 
     if($consultationFile->isNotValidDiagnostic()) {
         $errDiagnosticMsg = "Acest camp este obligatoriu";

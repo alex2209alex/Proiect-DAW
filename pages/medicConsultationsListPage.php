@@ -31,7 +31,7 @@
             <div class="col-4"><?php echo $value->getLabel(); ?></div>
             <div class="col-4"><?php echo $value->getCnp(); ?></div>
             <div class="col-1">
-                <a class="btn btn-outline-secondary" href="addConsultationFilePage.php?id=<?php echo $value->getIdConsultation(); ?>"><i class="bi bi-clipboard2-pulse"></i></a>
+                <a class="btn btn-outline-secondary mt-2" href="addConsultationFilePage.php?id=<?php echo $value->getIdConsultation(); ?>"><i class="bi bi-clipboard2-pulse"></i></a>
             </div>
         </div>
     <?php } ?>

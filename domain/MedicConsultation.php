@@ -2,14 +2,16 @@
 
 class MedicConsultation
 {
+    private int $idConsultation;
     private string $consultationDate;
     private string $consultationInterval;
     private string $lastName;
     private string $firstName;
     private string $cnp;
 
-    public function __construct(string $consultationDate, string $consultationInterval, string $lastName, string $firstName, string $cnp)
+    public function __construct(int $idConsultation, string $consultationDate, string $consultationInterval, string $lastName, string $firstName, string $cnp)
     {
+        $this->idConsultation = $idConsultation;
         $this->consultationDate = $consultationDate;
         $this->consultationInterval = $consultationInterval;
         $this->lastName = $lastName;
@@ -47,5 +49,8 @@ class MedicConsultation
         return $this->cnp;
     }
 
-
+    public function getIdConsultation(): int
+    {
+        return $this->idConsultation;
+    }
 }

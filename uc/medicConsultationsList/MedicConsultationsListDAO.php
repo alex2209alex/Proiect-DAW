@@ -18,19 +18,20 @@ class MedicConsultationsListDAO
         $responseArray = array();
         try {
             $conn->beginTransaction();
-            $sqlQuery = "SELECT pc.data_programare, interval_orar, u.nume, u.prenume, p.cnp FROM programare_consultatie pc JOIN intervale_de_consultatie ic ON ic.id_interval = pc.id_interval JOIN utilizator u on pc.id_pacient = u.id_utilizator JOIN pacient p on pc.id_pacient = p.id_utilizator WHERE pc.id_medic = :idMedic AND pc.data_programare >= CURRENT_DATE ORDER BY pc.data_programare, pc.id_interval";
+            $sqlQuery = "SELECT pc.id_programare, pc.data_programare, interval_orar, u.nume, u.prenume, p.cnp FROM programare_consultatie pc JOIN intervale_de_consultatie ic ON ic.id_interval = pc.id_interval JOIN utilizator u on pc.id_pacient = u.id_utilizator JOIN pacient p on pc.id_pacient = p.id_utilizator WHERE pc.id_medic = :idMedic AND pc.data_programare >= CURRENT_DATE ORDER BY pc.data_programare, pc.id_interval";
             $stmt = $conn->prepare($sqlQuery);
             $idMedic = htmlspecialchars(strip_tags($idMedic));
             $stmt->bindParam(":idMedic", $idMedic);
             $stmt->execute();
             $rows = $stmt->fetchAll();
             foreach ($rows as $row) {
+                $idConsultation = $row['id_programare'];
                 $consultationDate = $row['data_programare'];
                 $consultationInterval = $row['interval_orar'];
                 $lastName = $row['nume'];
                 $firstName = $row['prenume'];
                 $cnp = $row['cnp'];
-                $medicConsultation = new MedicConsultation($consultationDate, $consultationInterval, $lastName, $firstName, $cnp);
+                $medicConsultation = new MedicConsultation($idConsultation, $consultationDate, $consultationInterval, $lastName, $firstName, $cnp);
                 $responseArray[] = $medicConsultation;
             }
             $conn->commit();

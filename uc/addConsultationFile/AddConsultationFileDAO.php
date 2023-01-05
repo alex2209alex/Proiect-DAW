@@ -49,7 +49,7 @@ class AddConsultationFileDAO
             // sanitize
             // htmlspecialchars — Convert special characters to HTML entities
             // strip_tags — Strip HTML and PHP tags from a string
-            $idConsultation = htmlspecialchars(strip_tags($consultationFile->getIdConsultation()));
+            $idConsultation = htmlspecialchars(strip_tags($consultationFile->getConsultationId()));
             $stmt->bindParam(":idConsultation", $idConsultation);
             $stmt->execute();
             $count = $stmt->fetchColumn();
@@ -63,7 +63,7 @@ class AddConsultationFileDAO
             // sanitize
             // htmlspecialchars — Convert special characters to HTML entities
             // strip_tags — Strip HTML and PHP tags from a string
-            $idConsultation = htmlspecialchars(strip_tags($consultationFile->getIdConsultation()));
+            $idConsultation = htmlspecialchars(strip_tags($consultationFile->getConsultationId()));
             $stmt->bindParam(":idConsultation", $idConsultation);
             $stmt->execute();
             $fileId = $stmt->fetchColumn();

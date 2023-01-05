@@ -8,6 +8,19 @@
 
         gtag('config', 'G-C1TDX897LS');
     </script>
+    <script>
+        function isIE() {
+            // IE 10 and IE 11 and Edge legacy
+            return /Trident\/|MSIE/.test(window.navigator.userAgent);
+        }
+        let showBrowserAlert = (function () {
+            if (isIE() && window.location.pathname.indexOf("browserNotSupportedPage.php") ===  -1) {
+                window.location.href = '/pages/browserNotSupportedPage.php';
+            }
+        });
+        document.addEventListener('DOMContentLoaded', showBrowserAlert);
+
+    </script>
     <meta charset='UTF-8'>
     <meta name='author' content='Pavel Alexandru'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>

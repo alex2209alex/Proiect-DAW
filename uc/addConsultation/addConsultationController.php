@@ -2,6 +2,8 @@
 require_once dirname(__FILE__) . "/../../domain/ConsultationInterval.php";
 require_once dirname(__FILE__) . "/../../domain/Consultation.php";
 require_once dirname(__FILE__) . "/AddConsultationUC.php";
+require_once dirname(__FILE__) . "/../RandomStringUtils.php";
+
 
 $errConsultationDateMsg = null;
 $errIdMedicMsg = null;

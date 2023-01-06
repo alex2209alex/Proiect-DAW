@@ -1,6 +1,8 @@
 <?php
 require_once dirname(__FILE__) . "/../../domain/Medic.php";
 require_once dirname(__FILE__) . "/MedicAccountCreationUC.php";
+require_once dirname(__FILE__) . "/../RandomStringUtils.php";
+
 
 $errFirstNameMsg = null;
 $errLastNameMsg = null;

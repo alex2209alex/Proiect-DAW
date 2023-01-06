@@ -16,6 +16,7 @@
         </div>
     </div>
     <form action="/pages/addConsultation.php" method="post" novalidate>
+        <input type="hidden" name="csfrToken" value="<?php echo $_SESSION["csfrToken"] ?>">
         <div class="row mt-2">
             <div class="col-12">
                 <label for="consultationDate" class="form-label">Data programarii</label>

@@ -19,6 +19,12 @@ if (!isset($_SESSION["tip"]) || $_SESSION["tip"] != 'A') {
     exit;
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $randomStringUtils = new RandomStringUtils();
+    $csfrToken = $randomStringUtils->generateString();
+    $_SESSION["csfrToken"] = $csfrToken;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
@@ -58,6 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
+        if($_SESSION["csfrToken"] != trim($_POST['csfrToken'])) {
+            header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
+            exit;
+        }
         $accountCreationUC = new LabWorkerAccountCreationUC();
         $accountCreationUC->addLabWorker($labWorker);
         header("location: /index.php");

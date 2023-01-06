@@ -18,6 +18,7 @@ include '../uc/labWorkerAccountCreation/labWorkerAccountCreationController.php';
         </div>
     </div>
     <form action="/pages/labWorkerAccountCreationPage.php" method="post" novalidate>
+        <input type="hidden" name="csfrToken" value="<?php echo $_SESSION["csfrToken"] ?>">
         <div class="row mt-2">
             <div class="col-12">
                 <label for="email" class="form-label">Adresa de email</label>

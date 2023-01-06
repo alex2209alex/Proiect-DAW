@@ -28,6 +28,12 @@ if (!isset($_SESSION["loggedin"]) || !$_SESSION["loggedin"]) {
     exit;
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $randomStringUtils = new RandomStringUtils();
+    $csfrToken = $randomStringUtils->generateString();
+    $_SESSION["csfrToken"] = $csfrToken;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idInterval = intval(trim($_POST['idInterval']));
     $idPacient = intval(trim($_SESSION["id"]));
@@ -48,6 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
+        if($_SESSION["csfrToken"] != trim($_POST['csfrToken'])) {
+            header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
+            exit;
+        }
         $addConsultationUC = new AddConsultationUC();
         $addConsultationUC->addConsultation($consultation);
         header("location: pacientConsultationsListPage.php");

@@ -45,7 +45,7 @@ class AddConsultationUC
         $message = "Ati facut o programare pe data de " . $consultationDate . ". O puteti vedea in lista dumneavoastra de programari";
         // În caz că vre-un rând depășește N caractere, trebuie să utilizăm
         // wordwrap()
-        $message = wordwrap($message, 20, "<br/>\n");
+        $message = wordwrap($message, 100, "<br/>\n");
         $mail = new PHPMailer(true);
         $mail->IsSMTP();
         try {
@@ -60,7 +60,7 @@ class AddConsultationUC
             $mail->Password = 'jtgaqvzekdzdwgfi'; // GMAIL password
             $mail->AddAddress($to, $nume);
             $mail->SetFrom('phpproiectdaw@gmail.com', 'Pavel Alexandru');
-            $mail->Subject = 'Cod validare';
+            $mail->Subject = 'Confirmare programare';
             $mail->AltBody = 'To view this post you need a compatible HTML viewer!';
             $mail->MsgHTML($message);
             $mail->Send();

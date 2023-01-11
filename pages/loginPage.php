@@ -1,5 +1,6 @@
 <?php
 include '../uc/login/loginController.php';
+$pageTitle = 'Login';
 ?>
 <!doctype html>
 <html lang="en">

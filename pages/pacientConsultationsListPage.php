@@ -1,4 +1,6 @@
-<?php include '../uc/patientConsultationsList/pacientConsultationsListController.php'; ?>
+<?php include '../uc/patientConsultationsList/pacientConsultationsListController.php';
+$pageTitle = 'Programarile mele';
+?>
 <!doctype html>
 <html lang="en">
 <?php include '../templates/head.php'; ?>

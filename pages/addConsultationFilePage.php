@@ -1,4 +1,6 @@
-<?php include '../uc/addConsultationFile/addConsultationFileController.php'; ?>
+<?php include '../uc/addConsultationFile/addConsultationFileController.php';
+$pageTitle = 'Adauga fisa de consultatie';
+?>
 <!doctype html>
 <html lang="en">
 <?php include '../templates/head.php'; ?>

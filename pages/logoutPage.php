@@ -1,5 +1,6 @@
 <?php
 include '../uc/logout/logoutController.php';
+$pageTitle = 'Logout';
 ?>
 <!doctype html>
 <html lang="en">

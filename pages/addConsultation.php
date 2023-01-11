@@ -1,4 +1,6 @@
-<?php include '../uc/addConsultation/addConsultationController.php'; ?>
+<?php include '../uc/addConsultation/addConsultationController.php';
+$pageTitle = 'Adaugare consultatie';
+?>
 <!doctype html>
 <html lang="en">
 <?php include '../templates/head.php'; ?>

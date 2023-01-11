@@ -1,3 +1,6 @@
+<?php
+$pageTitle = 'Model baza de date';
+?>
 <!doctype html>
 <html lang="en">
 <?php include '../templates/head.php'; ?>

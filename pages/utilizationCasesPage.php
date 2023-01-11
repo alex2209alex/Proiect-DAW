@@ -1,3 +1,6 @@
+<?php
+$pageTitle = 'Cazuri de utilizare';
+?>
 <!doctype html>
 <html lang="en">
 <?php include '../templates/head.php'; ?>

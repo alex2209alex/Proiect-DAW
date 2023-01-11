@@ -1,5 +1,6 @@
 <?php
 include '../uc/labWorkerAccountCreation/labWorkerAccountCreationController.php';
+$pageTitle = 'Creare cont laborant';
 ?>
 <!doctype html>
 <html lang="en">

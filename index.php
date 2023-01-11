@@ -1,3 +1,6 @@
+<?php
+$pageTitle = 'Pagina principala';
+?>
 <!doctype html>
 <html lang="en">
     <?php include 'templates/head.php';?>

@@ -1,5 +1,6 @@
 <?php
 include '../uc/pacientAccountCreation/pacientAccountCreationController.php';
+$pageTitle = 'Creare cont';
 ?>
 <!doctype html>
 <html lang="en">

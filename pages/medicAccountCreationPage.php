@@ -1,5 +1,6 @@
 <?php
 include '../uc/medicAccountCreation/medicAccountCreationController.php';
+$pageTitle = 'Creare cont medic';
 ?>
 <!doctype html>
 <html lang="en">

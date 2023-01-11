@@ -1,5 +1,6 @@
 <?php
 include '../uc/accountConfirmation/accountConfirmationController.php';
+$pageTitle = 'Confirmare cont';
 ?>
 <!doctype html>
 <html lang="en">

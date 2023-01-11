@@ -3,6 +3,7 @@ require_once dirname(__FILE__) . '/../../config/Database.php';
 require_once dirname(__FILE__) . '/../../domain/Medic.php';
 require_once dirname(__FILE__) . '/../../domain/ConsultationInterval.php';
 require_once dirname(__FILE__) . '/../../domain/Consultation.php';
+require_once dirname(__FILE__) . '/../../domain/Pacient.php';
 
 
 class AddConsultationDAO
@@ -12,6 +13,33 @@ class AddConsultationDAO
     public function __construct()
     {
         $this->database = new Database();
+    }
+
+    public function getEmailAndPacientName(int $idPacient): Pacient
+    {
+        $conn = $this->database->getConnection();
+        try {
+            $conn->beginTransaction();
+            $sqlQuery = "SELECT nume, prenume, email FROM utilizator WHERE id_utilizator = :idPacient";
+            $stmt = $conn->prepare($sqlQuery);
+            // sanitize
+            // htmlspecialchars — Convert special characters to HTML entities
+            // strip_tags — Strip HTML and PHP tags from a string
+            $idPacient = htmlspecialchars(strip_tags($idPacient));
+            $stmt->bindParam(":idPacient", $idPacient);
+            $stmt->execute();
+            $row = $stmt->fetch();
+            $email =  $row['email'];
+            $lastName = $row['nume'];
+            $firstName = $row['prenume'];
+            $conn->commit();
+            $this->database->closeConnection();
+        } catch (Exception $e) {
+            $conn->rollback();
+            $this->database->closeConnection();
+            throw $e;
+        }
+        return New Pacient('', $email,'', '', $firstName, $lastName);
     }
 
     public function isConsultationUniqueForPacient(int $idPacient, string $consultationDate): bool

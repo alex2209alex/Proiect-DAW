@@ -61,6 +61,11 @@ $pageTitle = 'Adaugare consultatie';
         </div>
         <div class="row mt-2">
             <div class="col-12">
+                <p>Pe emailul introdus veti primi o confirmare ca programarea a fost facuta</p>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
                 <button type="submit" class="btn btn-primary" name="submit" value="submit">Adauga programare</button>
             </div>
         </div>

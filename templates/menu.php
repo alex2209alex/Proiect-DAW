@@ -7,6 +7,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
+                    <a class="nav-link" role="button" href="/">
+                        <i class="bi bi-house"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Prezentare proiect
                     </a>

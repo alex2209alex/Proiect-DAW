@@ -11,6 +11,8 @@
   ],
   "require": {
     "ext-pdo": "*",
-    "google/recaptcha": "1.2.4"
+    "google/recaptcha": "1.2.4",
+    "ext-curl": "*",
+    "ext-dom": "*"
   }
 }

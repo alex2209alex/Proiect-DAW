@@ -37,6 +37,7 @@ $pageTitle = 'Programarile mele';
             <div class="col-3"><?php echo $value->getLabel(); ?></div>
             <div class="col-4"><?php echo $value->getSpecialization(); ?></div>
             <form class="col-2" action="/pages/pacientConsultationsListPage.php" method="post" novalidate>
+                <input type="hidden" name="csfrToken" value="<?php echo $_SESSION["csfrToken"] ?>">
                 <input type="hidden" id="<?php echo $value->getIdConsultation() ?>" name="idConsultation" value="<?php echo $value->getIdConsultation() ?>">
                 <input class="btn btn-primary" type="submit" name="submit" value="Anuleaza">
             </form>

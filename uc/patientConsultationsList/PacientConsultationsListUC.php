@@ -14,4 +14,9 @@ class PacientConsultationsListUC
     {
         return $this->pacientConsultationsListDAO->getAllPacientConsultations($idPacient);
     }
+
+    public function deleteConsultation(int $idConsultation)
+    {
+        $this->pacientConsultationsListDAO->deleteConsultation($idConsultation);
+    }
 }

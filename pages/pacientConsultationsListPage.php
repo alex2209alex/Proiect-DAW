@@ -26,7 +26,7 @@ $pageTitle = 'Programarile mele';
         <div class="row mt-2">
             <div class="col-2"><strong>Data</strong></div>
             <div class="col-1"><strong>Ora</strong></div>
-            <div class="col-5"><strong>Medic</strong></div>
+            <div class="col-3"><strong>Medic</strong></div>
             <div class="col-4"><strong>Specialitate</strong></div>
         </div>
     <?php } ?>
@@ -34,8 +34,12 @@ $pageTitle = 'Programarile mele';
         <div class="row mt-2 border-top">
             <div class="col-2"><?php echo $value->getConsultationDate(); ?></div>
             <div class="col-1"><?php echo $value->getConsultationInterval(); ?></div>
-            <div class="col-5"><?php echo $value->getLabel(); ?></div>
+            <div class="col-3"><?php echo $value->getLabel(); ?></div>
             <div class="col-4"><?php echo $value->getSpecialization(); ?></div>
+            <form class="col-2" action="/pages/pacientConsultationsListPage.php" method="post" novalidate>
+                <input type="hidden" id="<?php echo $value->getIdConsultation() ?>" name="idConsultation" value="<?php echo $value->getIdConsultation() ?>">
+                <input class="btn btn-primary" type="submit" name="submit" value="Anuleaza">
+            </form>
         </div>
     <?php } ?>
 </div>

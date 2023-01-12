@@ -18,6 +18,16 @@ if (!isset($_SESSION["loggedin"]) || !$_SESSION["loggedin"]) {
     exit;
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $idConsultation = intval(trim($_POST["idConsultation"]));
+    try {
+        $pacientConsultationsListUC->deleteConsultation($idConsultation);
+    } catch (Exception $e) {
+        $errMsg = $e->getMessage();
+    }
+    header("location: /pages/pacientConsultationsListPage.php");
+}
+
 $idPacient = intval(trim($_SESSION["id"]));
 $pacientConsultationsArray = array();
 try {

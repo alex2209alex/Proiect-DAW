@@ -2,6 +2,7 @@
 
 class PacientConsultation
 {
+    private int $idConsultation;
     private string $consultationDate;
     private string $consultationInterval;
     private string $lastName;
@@ -15,6 +16,16 @@ class PacientConsultation
         $this->lastName = $lastName;
         $this->firstName = $firstName;
         $this->specialization = $specialization;
+    }
+
+    public function getIdConsultation(): int
+    {
+        return $this->idConsultation;
+    }
+
+    public function setIdConsultation(int $idConsultation): void
+    {
+        $this->idConsultation = $idConsultation;
     }
 
     public function getLabel(): string
